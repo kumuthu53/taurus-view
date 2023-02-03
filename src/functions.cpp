@@ -9,16 +9,23 @@
 #endif
 
 #include <iostream>
-#include <stdlib.h>
 
 #include "../include/functions.h"
 
 void welcome() {
+
+    clear_screen();
+
     std::cout << "Welcome to TaurusView!" << std::endl;
 
     slow_star(5);
 
-    std::cout << "\r";
+    clear_screen();
+
+}
+
+void clear_screen() {
+    std::cout << "\033c";
 }
 
 void slow_star(int number) {

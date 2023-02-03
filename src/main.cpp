@@ -7,6 +7,7 @@
 #include "../include/functions.h"
 
 int main() {
+
     welcome();
 
     std::cin.get();
