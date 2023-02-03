@@ -5,11 +5,27 @@
 #include <iostream>
 
 #include "../include/functions.h"
+#include "../include/terminalFunctions.h"
 
-int main() {
+
+int app() {
 
     welcome();
 
     std::cin.get();
+
+    return 0;
+}
+
+int main() {
+
+    try {
+        app();
+    } catch (const char* error) {
+        reset_styling();
+
+        std::cout << "Error: ";
+        std::cout << error << std::endl;
+    }
 }
 

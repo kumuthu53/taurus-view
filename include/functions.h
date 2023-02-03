@@ -7,8 +7,4 @@
 
 void welcome();
 
-void slow_star(int number);
-
-void clear_screen();
-
 #endif //TAURUS_VIEW_FUNCTIONS_H
