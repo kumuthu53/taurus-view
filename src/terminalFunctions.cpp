@@ -17,20 +17,22 @@ void clear_screen() {
     std::cout << "\033c";
 }
 
-void slow_star(int number) {
+void loading(int number) {
 
-    std::cout << "          ";
-    std::cout << "*";
-    std::cout.flush();
+    sleep(3);
 
-    for (int i = 0; i < number - 1; i++) {
-        sleep(1);
-
-        std::cout << "*";
-        std::cout.flush();
-    }
-
-    sleep(1);
+    //std::cout << "          ";
+    //std::cout << "*";
+    //std::cout.flush();
+    //
+    //for (int i = 0; i < number - 1; i++) {
+    //    sleep(1);
+    //
+    //    std::cout << "*";
+    //    std::cout.flush();
+    //}
+    //
+    //sleep(1);
 
 }
 
@@ -70,6 +72,19 @@ std::string center_on_80(const std::string &text) {
     std::string centered = std::string(prefix_length, ' ') + text + std::string(suffix_length, ' ');
 
     return centered;
+}
+
+void print_white_lines(int number) {
+
+    std::string line = std::string(80, ' ');
+
+    std::cout << "\033[47m";
+
+    for (int i = 0; i < number; i++) {
+        std::cout << line << std::endl;
+    }
+
+    reset_styling();
 }
 
 
