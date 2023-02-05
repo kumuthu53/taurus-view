@@ -12,7 +12,17 @@ int app() {
 
     welcome_screen();
 
-    option_screen();
+    Option option = option_screen();
+
+    if (option == DATA) {
+
+    }
+    else if (option == CONVERT) {
+
+    }
+    else {
+        throw "Invalid option.";
+    }
 
     std::cin.get();
 

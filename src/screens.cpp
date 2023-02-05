@@ -47,8 +47,12 @@ Option option_screen() {
 
     Option option = get_option();
 
-    return DATA;
+    return option;
 }
+
+
+
+
 
 
 
