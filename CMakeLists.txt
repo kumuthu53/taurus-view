@@ -4,4 +4,4 @@ project(taurus-view)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(taurus-view src/main.cpp src/functions.cpp include/functions.h src/terminalFunctions.cpp include/terminalFunctions.h)
+add_executable(taurus-view src/main.cpp src/screens.cpp include/screens.h src/terminalFunctions.cpp include/terminalFunctions.h)

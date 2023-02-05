@@ -4,13 +4,15 @@
 
 #include <iostream>
 
-#include "../include/functions.h"
+#include "../include/screens.h"
 #include "../include/terminalFunctions.h"
 
 
 int app() {
 
-    welcome();
+    welcome_screen();
+
+    option_screen();
 
     std::cin.get();
 
