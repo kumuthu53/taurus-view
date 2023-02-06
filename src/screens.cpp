@@ -6,6 +6,8 @@
 
 #include "../include/screens.h"
 #include "../include/terminalFunctions.h"
+#include "../include/ConvertInput.h"
+#include "../include/DataInput.h"
 
 void welcome_screen() {
 
@@ -48,6 +50,36 @@ Option option_screen() {
     Option option = get_option();
 
     return option;
+}
+
+ConvertInput convert_input_screen() {
+
+    clear_screen();
+
+    print_blank_lines(1);
+
+    std::cout << left_justify_on_80("Enter the details of the conversion.") << std::endl;
+
+    print_blank_lines(1);
+
+    print_currencies_prompt();
+
+    std::cin.get();
+
+    return ConvertInput();
+}
+
+DataInput data_input_screen() {
+
+    clear_screen();
+
+    print_blank_lines(1);
+
+    std::cout << left_justify_on_80("Under construction.") << std::endl;
+
+    std::cin.get();
+
+    return DataInput();
 }
 
 

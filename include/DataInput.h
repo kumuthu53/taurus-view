@@ -19,6 +19,7 @@ private:
     std::string to_symbol;
 public:
     DataInput(Frequency frequency, const std::string &from_symbol, const std::string &to_symbol);
+    DataInput(){};
 
     Frequency get_frequency() const;
 

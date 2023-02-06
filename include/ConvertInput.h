@@ -15,6 +15,7 @@ private:
     double amount;
 public:
     ConvertInput(const std::string &from_symbol, const std::string &to_symbol, double amount);
+    ConvertInput(){};
 
     const std::string &getFromSymbol() const;
 

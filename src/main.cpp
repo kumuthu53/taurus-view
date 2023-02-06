@@ -6,6 +6,8 @@
 
 #include "../include/screens.h"
 #include "../include/terminalFunctions.h"
+#include "../include/ConvertInput.h"
+#include "../include/DataInput.h"
 
 
 int app() {
@@ -15,10 +17,12 @@ int app() {
     Option option = option_screen();
 
     if (option == DATA) {
+        DataInput dataInput = data_input_screen();
+
 
     }
     else if (option == CONVERT) {
-
+        ConvertInput convertInput = convert_input_screen();
     }
     else {
         throw "Invalid option.";
