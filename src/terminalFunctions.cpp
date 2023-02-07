@@ -116,17 +116,7 @@ void print_currencies_prompt() {
 
     std::cout <<  "To (currency code) : ___" << std::endl;
 
-    print_blank_lines(3);
-
-    std::cout << std::string(5, ' ') << "Amount : " << std::endl;
-
     print_blank_lines(1);
-
-    std::cout << left_justify_on_80("Available currency codes are as follows.") << std::endl;
-
-    print_blank_lines(1);
-
-    print_white_lines(10);
 
 }
 
