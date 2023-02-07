@@ -61,7 +61,7 @@ ConvertInput convert_input_screen() {
 
     print_blank_lines(1);
 
-    std::cout << left_justify_on_80("Enter the details of the conversion.") << std::endl;
+    std::cout << left_justify_on_80("Press enter after enter each value.") << std::endl;
 
     print_blank_lines(1);
 
@@ -79,9 +79,13 @@ ConvertInput convert_input_screen() {
 
     currencies.print_codes();
 
-    std::cin.get();
+    ConvertInput convert_input;
 
-    return ConvertInput();
+    convert_input.set_from_symbol(get_from_currency(currencies));
+    convert_input.set_from_symbol(get_to_currency(currencies));
+    convert_input.set_amount(get_amount());
+
+    return convert_input;
 }
 
 DataInput data_input_screen() {
@@ -92,7 +96,7 @@ DataInput data_input_screen() {
 
     print_blank_lines(1);
 
-    std::cout << left_justify_on_80("Enter the details of the data you require.") << std::endl;
+    std::cout << left_justify_on_80("Press enter after enter each value.") << std::endl;
 
     print_blank_lines(1);
 
@@ -113,6 +117,17 @@ DataInput data_input_screen() {
     std::cin.get();
 
     return DataInput();
+}
+
+void convert_output_screen(ConvertInput convert_input) {
+
+    clear_screen();
+
+    std::cout << "convert_output_screen" << std::endl;
+
+    std:: cout << convert_input.get_from_symbol() << std::endl;
+    std:: cout << convert_input.get_to_symbol() << std::endl;
+    std:: cout << convert_input.get_amount() << std::endl;
 }
 
 

@@ -5,9 +5,10 @@
 #ifndef TAURUS_VIEW_TERMINALFUNCTIONS_H
 #define TAURUS_VIEW_TERMINALFUNCTIONS_H
 
-#include "../include/screens.h"
-#include "../include/ConvertInput.h"
-#include "../include/DataInput.h"
+#include "screens.h"
+#include "ConvertInput.h"
+#include "DataInput.h"
+#include "Currencies.h"
 
 void loading(int number);
 
@@ -30,6 +31,12 @@ void print_white_lines(int number);
 void print_blank_lines(int number);
 
 Option get_option();
+
+std::string get_from_currency(Currencies &currencies);
+
+std::string get_to_currency(Currencies &currencies);
+
+double get_amount();
 
 void move_cursor_up(int num_lines);
 

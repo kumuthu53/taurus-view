@@ -10,9 +10,13 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <algorithm>
+#include <vector>
+#include <sstream>
 
 #include "../include/terminalFunctions.h"
 #include "../include/screens.h"
+#include "../include/Currencies.h"
 
 void clear_screen() {
     std::cout << "\033c";
@@ -176,6 +180,154 @@ Option get_option() {
 
         return option;
     }
+}
+
+std::string get_from_currency(Currencies &currencies) {
+
+    reset_styling();
+
+    std::string from_currency;
+
+    // Move cursor.
+    std::cout << "\033[5;34H";
+
+    std::cout << "___";
+
+    // Move cursor.
+    std::cout << "\033[5;34H";
+
+    // Underlined text.
+    std::cout << "\033[4m";
+
+    getline(std::cin, from_currency);
+
+    const std::vector<Currency> &currencies_vector = currencies.getCurrencies();
+
+    auto currency_iterator = std::find_if(currencies_vector.begin(), currencies_vector.end(),
+                                          [&from_currency](const Currency& currency) { return currency.equals(from_currency); });
+
+    if (currency_iterator == currencies_vector.end()) {
+
+        reset_styling();
+
+        // Move cursor.
+        std::cout << "\033[4;11H";
+
+        // Red text.
+        std::cout << "\033[31m";
+
+        std::cout << "Invalid code. Re-enter.";
+
+        get_from_currency(currencies);
+    }
+
+    reset_styling();
+
+    // Move cursor.
+    std::cout << "\033[4;0H";
+
+    print_blank_lines(1);
+
+    // Move cursor.
+    std::cout << "\033[6;11H";
+
+    currency_iterator->print_name();
+
+    return from_currency;
+}
+
+std::string get_to_currency(Currencies &currencies) {
+
+    reset_styling();
+
+    std::string to_currency;
+
+    // Move cursor.
+    std::cout << "\033[5;61H";
+
+    std::cout << "___";
+
+    // Move cursor.
+    std::cout << "\033[5;61H";
+
+    // Underlined text.
+    std::cout << "\033[4m";
+
+    getline(std::cin, to_currency);
+
+    const std::vector<Currency> &currencies_vector = currencies.getCurrencies();
+
+    auto currency_iterator = std::find_if(currencies_vector.begin(), currencies_vector.end(),
+                                          [&to_currency](const Currency& currency) { return currency.equals(to_currency); });
+
+    if (currency_iterator == currencies_vector.end()) {
+
+        reset_styling();
+
+        // Move cursor.
+        std::cout << "\033[4;40H";
+
+        // Red text.
+        std::cout << "\033[31m";
+
+        std::cout << "Invalid code. Re-enter.";
+
+        get_to_currency(currencies);
+    }
+
+    reset_styling();
+
+    // Move cursor.
+    std::cout << "\033[4;0H";
+
+    print_blank_lines(1);
+
+    // Move cursor.
+    std::cout << "\033[6;40H";
+
+    currency_iterator->print_name();
+
+    return to_currency;
+}
+
+double get_amount() {
+
+    reset_styling();
+
+    // Move cursor.
+    std::cout << "\033[9;20H";
+
+    std::string amount_string;
+    double amount;
+
+    getline(std::cin, amount_string);
+
+    std::istringstream iss(amount_string);
+
+    if (!(iss >> amount)) {
+
+        // Move cursor.
+        std::cout << "\033[8;11H";
+
+        // Red text.
+        std::cout << "\033[31m";
+
+        std::cout << "Invalid amount. Please re-enter.";
+
+        reset_styling();
+
+        // Move cursor.
+        std::cout << "\033[9;20H";
+
+        print_blank_lines(1);
+
+        amount = get_amount();
+
+    }
+
+
+    return amount;
+
 }
 
 void move_cursor_up(int num_lines) {

@@ -19,10 +19,13 @@ int app() {
     if (option == DATA) {
         DataInput dataInput = data_input_screen();
 
-
     }
     else if (option == CONVERT) {
-        ConvertInput convertInput = convert_input_screen();
+        ConvertInput convert_input = convert_input_screen();
+
+        convert_output_screen(convert_input);
+
+        std::cin.get();
     }
     else {
         throw "Invalid option.";

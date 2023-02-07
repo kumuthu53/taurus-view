@@ -12,16 +12,17 @@ class ConvertInput {
 private:
     std::string from_symbol;
     std::string to_symbol;
+private:
     double amount;
 public:
     ConvertInput(const std::string &from_symbol, const std::string &to_symbol, double amount);
-    ConvertInput(){};
-
-    const std::string &getFromSymbol() const;
-
-    const std::string &getToSymbol() const;
-
-    double getAmount() const;
+    ConvertInput();
+    const std::string &get_from_symbol() const;
+    const std::string &get_to_symbol() const;
+    double get_amount() const;
+    void set_from_symbol(const std::string &from_symbol);
+    void set_to_symbol(const std::string &to_symbol);
+    void set_amount(double amount);
 };
 
 

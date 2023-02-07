@@ -18,7 +18,7 @@ private:
 public:
     Currencies();
     void print_codes() const;
-    bool is_valid(std::string code) const;
+    const std::vector<Currency> &getCurrencies() const;
 };
 
 

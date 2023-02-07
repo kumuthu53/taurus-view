@@ -53,6 +53,6 @@ void Currencies::print_codes() const {
 
 }
 
-bool Currencies::is_valid(std::string code) const {
-    return false;
+const std::vector<Currency> &Currencies::getCurrencies() const {
+    return currencies;
 }
