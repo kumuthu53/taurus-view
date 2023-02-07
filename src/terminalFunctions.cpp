@@ -330,6 +330,48 @@ double get_amount() {
 
 }
 
+Frequency get_frequency() {
+
+    reset_styling();
+
+    std::string frequency_string;
+
+    Frequency frequency;
+
+    // Move cursor.
+    std::cout << "\033[9;50H";
+
+    print_blank_lines(1);
+
+    // Move cursor.
+    std::cout << "\033[9;50H";
+
+    getline(std::cin, frequency_string);
+
+    if (frequency_string == "DAILY") {
+        frequency = DAILY;
+    }
+    else if (frequency_string == "WEEKLY") {
+        frequency = WEEKLY;
+    }
+    else if (frequency_string == "MONTHLY") {
+        frequency = MONTHLY;
+    }
+    else {
+        // Move cursor.
+        std::cout << "\033[8;11H";
+
+        // Red text.
+        std::cout << "\033[31m";
+
+        std::cout << "Invalid frequency. Please re-enter.";
+
+        frequency = get_frequency();
+    }
+
+    return  frequency;
+}
+
 void move_cursor_up(int num_lines) {
 
     for (int i = 0; i < num_lines; i++) {

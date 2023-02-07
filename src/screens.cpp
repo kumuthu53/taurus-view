@@ -61,7 +61,7 @@ ConvertInput convert_input_screen() {
 
     print_blank_lines(1);
 
-    std::cout << left_justify_on_80("Press enter after enter each value.") << std::endl;
+    std::cout << left_justify_on_80("Press ENTER after entering each value.") << std::endl;
 
     print_blank_lines(1);
 
@@ -82,7 +82,7 @@ ConvertInput convert_input_screen() {
     ConvertInput convert_input;
 
     convert_input.set_from_symbol(get_from_currency(currencies));
-    convert_input.set_from_symbol(get_to_currency(currencies));
+    convert_input.set_to_symbol(get_to_currency(currencies));
     convert_input.set_amount(get_amount());
 
     return convert_input;
@@ -96,7 +96,7 @@ DataInput data_input_screen() {
 
     print_blank_lines(1);
 
-    std::cout << left_justify_on_80("Press enter after enter each value.") << std::endl;
+    std::cout << left_justify_on_80("Press ENTER after entering each value.") << std::endl;
 
     print_blank_lines(1);
 
@@ -104,7 +104,7 @@ DataInput data_input_screen() {
 
     print_blank_lines(2);
 
-    std::cout << std::string(10, ' ') << "Frequency (DAILY, WEEKLY, MONTHLY) : " << std::endl;
+    std::cout << std::string(10, ' ') << "Frequency (DAILY | WEEKLY | MONTHLY) : " << std::endl;
 
     print_blank_lines(2);
 
@@ -114,9 +114,13 @@ DataInput data_input_screen() {
 
     currencies.print_codes();
 
-    std::cin.get();
+    DataInput data_input;
 
-    return DataInput();
+    data_input.set_from_symbol(get_from_currency(currencies));
+    data_input.set_to_symbol(get_to_currency(currencies));
+    data_input.set_frequency(get_frequency());
+
+    return data_input;
 }
 
 void convert_output_screen(ConvertInput convert_input) {
@@ -125,9 +129,19 @@ void convert_output_screen(ConvertInput convert_input) {
 
     std::cout << "convert_output_screen" << std::endl;
 
-    std:: cout << convert_input.get_from_symbol() << std::endl;
-    std:: cout << convert_input.get_to_symbol() << std::endl;
-    std:: cout << convert_input.get_amount() << std::endl;
+    std::cout << convert_input.get_from_symbol() << std::endl;
+    std::cout << convert_input.get_to_symbol() << std::endl;
+    std::cout << convert_input.get_amount() << std::endl;
+}
+
+void data_output_screen(DataInput data_input) {
+    clear_screen();
+
+    std::cout << "data_output_screen" << std::endl;
+
+    std:: cout << data_input.get_from_symbol() << std::endl;
+    std:: cout << data_input.get_to_symbol() << std::endl;
+    std:: cout << data_input.get_frequency() << std::endl;
 }
 
 

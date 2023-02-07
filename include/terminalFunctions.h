@@ -38,6 +38,8 @@ std::string get_to_currency(Currencies &currencies);
 
 double get_amount();
 
+Frequency get_frequency();
+
 void move_cursor_up(int num_lines);
 
 void move_cursor_down(int num_lines);

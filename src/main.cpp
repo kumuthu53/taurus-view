@@ -17,7 +17,11 @@ int app() {
     Option option = option_screen();
 
     if (option == DATA) {
-        DataInput dataInput = data_input_screen();
+        DataInput data_input = data_input_screen();
+
+        data_output_screen(data_input);
+
+        std::cin.get();
 
     }
     else if (option == CONVERT) {
