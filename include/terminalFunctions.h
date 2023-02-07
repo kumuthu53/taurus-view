@@ -46,8 +46,6 @@ void move_cursor_down(int num_lines);
 
 void move_cursor_down_to_start(int num_lines);
 
-ConvertInput convert_input_screen();
-
-DataInput data_input_screen();
+void print_ascii_arrow();
 
 #endif //TAURUS_VIEW_TERMINALFUNCTIONS_H

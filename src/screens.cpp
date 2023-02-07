@@ -123,25 +123,50 @@ DataInput data_input_screen() {
     return data_input;
 }
 
-void convert_output_screen(ConvertInput convert_input) {
+void convert_output_screen() {
 
     clear_screen();
 
-    std::cout << "convert_output_screen" << std::endl;
+    print_blank_lines(1);
 
-    std::cout << convert_input.get_from_symbol() << std::endl;
-    std::cout << convert_input.get_to_symbol() << std::endl;
-    std::cout << convert_input.get_amount() << std::endl;
+    std::cout << std::string(5, ' ') << "Press LEFT ARROW KEY to return to main menu." << std::endl;
+
+    print_blank_lines(1);
+
+    std::cout << std::string(10, ' ') << "+----------------------------+" << std::endl;
+    std::cout << std::string(10, ' ') << "|                            |" << std::endl;
+    std::cout << std::string(10, ' ') << "+----------------------------+" << std::endl;
+
+    print_blank_lines(1);
+
+    print_ascii_arrow();
+
+    print_blank_lines(1);
+
+    std::cout << std::string(10, ' ') << "+----------------------------+" << std::endl;
+    std::cout << std::string(10, ' ') << "|                            |" << std::endl;
+    std::cout << std::string(10, ' ') << "+----------------------------+" << std::endl;
+
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ') << "Exchange rate is " << std::endl;
+
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ') << "Data refreshed at " << std::endl;
+    std::cout << std::string(5, ' ') << "Sourced from www.alphavantage.com" << std::endl;
+
+    std::cin.get();
 }
 
-void data_output_screen(DataInput data_input) {
+void data_output_screen() {
     clear_screen();
 
-    std::cout << "data_output_screen" << std::endl;
+    print_blank_lines(1);
 
-    std:: cout << data_input.get_from_symbol() << std::endl;
-    std:: cout << data_input.get_to_symbol() << std::endl;
-    std:: cout << data_input.get_frequency() << std::endl;
+    std::cout << std::string(5, ' ') << "Under construction." << std::endl;
+
+    std::cin.get();
 }
 
 

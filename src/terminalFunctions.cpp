@@ -393,3 +393,15 @@ void move_cursor_down_to_start(int num_lines) {
     }
 }
 
+void print_ascii_arrow() {
+
+    std::cout << std::string(15, ' ') << "        @@@        " << std::endl;
+    std::cout << std::string(15, ' ') << "        @@@        " << std::endl;
+    std::cout << std::string(15, ' ') << "%@@@    @@@    @@@," << std::endl;
+    std::cout << std::string(15, ' ') << "  @@@@  @@@  @@@@  " << std::endl;
+    std::cout << std::string(15, ' ') << "    @@@@@@@@@@@    " << std::endl;
+    std::cout << std::string(15, ' ') << "       @@@@@       " << std::endl;
+    std::cout << std::string(15, ' ') << "         @         " << std::endl;
+
+}
+

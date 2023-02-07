@@ -21,8 +21,8 @@ ConvertInput convert_input_screen();
 
 DataInput data_input_screen();
 
-void convert_output_screen(ConvertInput convert_input);
+void convert_output_screen();
 
-void data_output_screen(DataInput data_input);
+void data_output_screen();
 
 #endif //TAURUS_VIEW_SCREENS_H

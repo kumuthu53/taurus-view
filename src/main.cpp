@@ -19,7 +19,7 @@ int app() {
     if (option == DATA) {
         DataInput data_input = data_input_screen();
 
-        data_output_screen(data_input);
+        data_output_screen();
 
         std::cin.get();
 
@@ -27,7 +27,7 @@ int app() {
     else if (option == CONVERT) {
         ConvertInput convert_input = convert_input_screen();
 
-        convert_output_screen(convert_input);
+        convert_output_screen();
 
         std::cin.get();
     }
