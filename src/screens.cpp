@@ -88,9 +88,27 @@ DataInput data_input_screen() {
 
     clear_screen();
 
+    Currencies currencies;
+
     print_blank_lines(1);
 
-    std::cout << left_justify_on_80("Under construction.") << std::endl;
+    std::cout << left_justify_on_80("Enter the details of the data you require.") << std::endl;
+
+    print_blank_lines(1);
+
+    print_currencies_prompt();
+
+    print_blank_lines(2);
+
+    std::cout << std::string(10, ' ') << "Frequency (DAILY, WEEKLY, MONTHLY) : " << std::endl;
+
+    print_blank_lines(2);
+
+    std::cout << left_justify_on_80("Available currency codes are as follows.") << std::endl;
+
+    print_blank_lines(1);
+
+    currencies.print_codes();
 
     std::cin.get();
 
