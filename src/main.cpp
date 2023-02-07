@@ -14,28 +14,35 @@ int app() {
 
     welcome_screen();
 
-    Option option = option_screen();
+    while (true) {
 
-    if (option == DATA) {
-        DataInput data_input = data_input_screen();
+        Option option = option_screen();
 
-        data_output_screen();
+        if (option == DATA) {
+            DataInput data_input = data_input_screen();
 
-        std::cin.get();
+            Option end_option = data_output_screen();
 
+            if (end_option == EXIT) {
+                break;
+            }
+
+        } else if (option == CONVERT) {
+            ConvertInput convert_input = convert_input_screen();
+
+            Option end_option = convert_output_screen();
+
+            if (end_option == EXIT) {
+                break;
+            }
+
+        }
+        else {
+            break;
+        }
     }
-    else if (option == CONVERT) {
-        ConvertInput convert_input = convert_input_screen();
 
-        convert_output_screen();
-
-        std::cin.get();
-    }
-    else {
-        throw "Invalid option.";
-    }
-
-    std::cin.get();
+    exit_screen();
 
     return 0;
 }

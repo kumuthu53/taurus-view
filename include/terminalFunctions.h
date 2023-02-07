@@ -40,6 +40,8 @@ double get_amount();
 
 Frequency get_frequency();
 
+Option get_end_option();
+
 void move_cursor_up(int num_lines);
 
 void move_cursor_down(int num_lines);

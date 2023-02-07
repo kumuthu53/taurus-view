@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <unistd.h>
 
 #include "../include/screens.h"
 #include "../include/terminalFunctions.h"
@@ -20,7 +21,7 @@ void welcome_screen() {
 
     print_white_lines(1);
 
-    loading(5);
+    loading(3);
 
 }
 
@@ -28,9 +29,11 @@ Option option_screen() {
 
     clear_screen();
 
-    print_blank_lines(1);
+    print_white_lines(1);
 
-    std::cout << left_justify_on_80("TaurusView supports the following functions.") << std::endl;
+    print_title("Main Menu");
+
+    print_white_lines(1);
 
     print_blank_lines(2);
 
@@ -46,7 +49,7 @@ Option option_screen() {
 
     print_blank_lines(2);
 
-    std::cout << left_justify_on_80("Enter function (DATA | CONVERT) :") << std::endl;
+    std::cout << left_justify_on_80("Enter function (DATA | CONVERT | EXIT) :") << std::endl;
 
     Option option = get_option();
 
@@ -123,7 +126,7 @@ DataInput data_input_screen() {
     return data_input;
 }
 
-void convert_output_screen() {
+Option convert_output_screen() {
 
     clear_screen();
 
@@ -154,19 +157,57 @@ void convert_output_screen() {
     print_blank_lines(1);
 
     std::cout << std::string(5, ' ') << "Data refreshed at " << std::endl;
-    std::cout << std::string(5, ' ') << "Sourced from www.alphavantage.com" << std::endl;
+    std::cout << std::string(5, ' ') << "Sourced from www.alphavantage.co" << std::endl;
 
-    std::cin.get();
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ') << "Enter 'BACK' to go back or 'EXIT' to exit : ";
+
+    return get_end_option();
+
 }
 
-void data_output_screen() {
+Option data_output_screen() {
+
     clear_screen();
 
     print_blank_lines(1);
 
-    std::cout << std::string(5, ' ') << "Under construction." << std::endl;
+    std::cout << std::string(10, ' ') << "+----------------+--------------------+--------------------+" << std::endl;
+    std::cout << std::string(10, ' ') << "|      Date      |        Open        |       Close        |" << std::endl;
+    std::cout << std::string(10, ' ') << "+----------------+--------------------+--------------------+" << std::endl;
 
-    std::cin.get();
+    for (int i = 0; i < 7; i++) {
+        std::cout << std::string(10, ' ') << "|                |                    |                    |" << std::endl;
+        std::cout << std::string(10, ' ') << "+----------------+--------------------+--------------------+" << std::endl;
+    }
+
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ') << "Data refreshed at " << std::endl;
+    std::cout << std::string(5, ' ') << "Sourced from www.alphavantage.co" << std::endl;
+
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ') << "Enter 'BACK' to go back or 'EXIT' to exit : ";
+
+    return get_end_option();
+}
+
+void exit_screen() {
+
+    clear_screen();
+
+    print_white_lines(1);
+
+    print_title("Thanks for using TaurusView!");
+
+    print_white_lines(1);
+
+    loading(3);
+
+    clear_screen();
+
 }
 
 

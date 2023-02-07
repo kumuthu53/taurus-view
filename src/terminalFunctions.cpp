@@ -161,6 +161,9 @@ Option get_option() {
     else if (option_string == "CONVERT") {
         return CONVERT;
     }
+    else if (option_string == "EXIT") {
+        return EXIT;
+    }
     else {
         move_cursor_up(3);
 
@@ -180,6 +183,42 @@ Option get_option() {
 
         return option;
     }
+}
+
+Option get_end_option() {
+
+    std::string option_string;
+
+    // Move cursor.
+    std::cout << "\033[23;50H";
+
+    // Clear current line.
+    std::cout << "\033[K";
+
+    getline(std::cin, option_string);
+
+    if (option_string == "BACK") {
+        return BACK;
+    } else if (option_string == "EXIT") {
+        return EXIT;
+    }
+    else {
+
+        // Move cursor.
+        std::cout << "\033[22;6H";
+
+        // Red text.
+        std::cout << "\033[31m";
+
+        std::cout << "Invalid input. Please re-enter." << std::endl;
+
+        reset_styling();
+
+        Option option = get_end_option();
+
+        return option;
+    }
+
 }
 
 std::string get_from_currency(Currencies &currencies) {
