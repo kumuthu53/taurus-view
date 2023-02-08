@@ -9,6 +9,8 @@
 #include "../include/ConvertInput.h"
 #include "../include/DataInput.h"
 #include "../include/AlphaVantageAPI.h"
+#include "../include/ConvertOutput.h"
+#include "../include/processing.h"
 
 
 int app() {
@@ -31,19 +33,21 @@ int app() {
                 break;
             }
 
-        } else if (option == CHANGE_KEY) {
-
-            api.set_api_key(api_key_screen(true));
-
-        } else if (option == CONVERT) {
+        }  else if (option == CONVERT) {
 
             ConvertInput convert_input = convert_input_screen();
+
+            ConvertOutput convert_output = process_convert(convert_input, api);
 
             Option end_option = convert_output_screen();
 
             if (end_option == EXIT) {
                 break;
             }
+
+        } else if (option == CHANGE_KEY) {
+
+            api.set_api_key(api_key_screen(true));
 
         }
 

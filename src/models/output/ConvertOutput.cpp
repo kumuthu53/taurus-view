@@ -36,18 +36,18 @@ void ConvertOutput::set_to_currency_name(const std::string &to_currency_name) {
     this->to_currency_name = to_currency_name;
 }
 
-double ConvertOutput::getExchangeRate() const {
+double ConvertOutput::get_exchange_rate() const {
     return exchange_rate;
 }
 
-void ConvertOutput::setExchangeRate(double exchangeRate) {
-    this->exchange_rate = exchangeRate;
+void ConvertOutput::set_exchange_rate(double exchange_rate) {
+    this->exchange_rate = exchange_rate;
 }
 
-const std::string &ConvertOutput::getDataTime() const {
+const std::string &ConvertOutput::get_data_time() const {
     return data_time;
 }
 
-void ConvertOutput::setDataTime(const std::string &dataTime) {
-    this->data_time = dataTime;
+void ConvertOutput::set_data_time(const std::string &data_time) {
+    this->data_time = data_time;
 }

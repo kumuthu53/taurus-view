@@ -198,6 +198,22 @@ DataInput data_input_screen() {
     return data_input;
 }
 
+void processing_screen() {
+
+    clear_screen();
+
+    reset_styling();
+
+    print_blank_lines(1);
+
+    std::cout << left_justify_on_80("Your request is being processed. Please wait.") << std::endl;
+
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ');
+
+}
+
 Option convert_output_screen() {
 
     clear_screen();

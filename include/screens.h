@@ -26,6 +26,8 @@ ConvertInput convert_input_screen();
 
 DataInput data_input_screen();
 
+void processing_screen();
+
 Option convert_output_screen();
 
 Option data_output_screen();

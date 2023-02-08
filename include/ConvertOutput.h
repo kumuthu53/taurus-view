@@ -31,14 +31,10 @@ public:
     void set_from_currency_name(const std::string &from_currency_name);
     const std::string &get_to_currency_name() const;
     void set_to_currency_name(const std::string &to_currency_name);
-
-    double getExchangeRate() const;
-
-    void setExchangeRate(double exchangeRate);
-
-    const std::string &getDataTime() const;
-
-    void setDataTime(const std::string &dataTime);
+    double get_exchange_rate() const;
+    void set_exchange_rate(double exchange_rate);
+    const std::string &get_data_time() const;
+    void set_data_time(const std::string &data_time);
 };
 
 
