@@ -8,6 +8,7 @@
 #include "../include/terminalFunctions.h"
 #include "../include/ConvertInput.h"
 #include "../include/DataInput.h"
+#include "../include/AlphaVantageAPI.h"
 
 
 int app() {
@@ -16,9 +17,12 @@ int app() {
 
     while (true) {
 
+        AlphaVantageAPI api(api_key_screen());
+
         Option option = option_screen();
 
         if (option == DATA) {
+
             DataInput data_input = data_input_screen();
 
             Option end_option = data_output_screen();
@@ -27,7 +31,12 @@ int app() {
                 break;
             }
 
+        } else if (option == CHANGE_KEY) {
+
+            api.set_api_key(api_key_screen(true));
+
         } else if (option == CONVERT) {
+
             ConvertInput convert_input = convert_input_screen();
 
             Option end_option = convert_output_screen();
@@ -37,6 +46,7 @@ int app() {
             }
 
         }
+
         else {
             break;
         }

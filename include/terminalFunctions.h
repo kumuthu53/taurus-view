@@ -30,6 +30,8 @@ void print_white_lines(int number);
 
 void print_blank_lines(int number);
 
+std::string get_and_store_api_key(std::string file_path);
+
 Option get_option();
 
 std::string get_from_currency(Currencies &currencies);

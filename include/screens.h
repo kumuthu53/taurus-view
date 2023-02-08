@@ -12,12 +12,15 @@ enum Option : char {
     DATA = 0,
     CONVERT = 1,
     EXIT = 2,
-    BACK = 3
+    BACK = 3,
+    CHANGE_KEY = 4
 };
 
 void welcome_screen();
 
 Option option_screen();
+
+std::string api_key_screen(bool force = false);
 
 ConvertInput convert_input_screen();
 

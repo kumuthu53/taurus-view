@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <vector>
 #include <sstream>
+#include <fstream>
 
 #include "../include/terminalFunctions.h"
 #include "../include/screens.h"
@@ -147,6 +148,59 @@ void print_blank_lines(int number) {
 
 }
 
+std::string get_and_store_api_key(std::string file_path) {
+
+    std::string api_key;
+
+    reset_styling();
+
+    // Move cursor.
+    std::cout << "\033[12;33H";
+
+    std::cout << "________________                     |";
+
+    // Clear current line.
+    std::cout << "\033[K";
+
+    // Move cursor.
+    std::cout << "\033[12;33H";
+
+    // Underlined text.
+    std::cout << "\033[4m";
+
+    getline(std::cin, api_key);
+
+    if (api_key.length() != 16) {
+
+        reset_styling();
+
+        // Move cursor.
+        std::cout << "\033[11;16H";
+
+        // Red text.
+        std::cout << "\033[31m";
+
+        std::cout << "API key should be 16 characters. Please re-enter.";
+
+        api_key = get_and_store_api_key(file_path);
+
+        return api_key;
+    }
+
+    std::ofstream out_file(file_path);
+
+    if (!out_file) {
+        throw "Failed to create file '~/taurus-view/api_key.txt.";
+    }
+
+    out_file << api_key;
+
+    out_file.close();
+
+    return api_key;
+
+}
+
 Option get_option() {
 
     std::string option_string;
@@ -160,6 +214,9 @@ Option get_option() {
     }
     else if (option_string == "CONVERT") {
         return CONVERT;
+    }
+    else if (option_string == "CHANGE_KEY") {
+        return CHANGE_KEY;
     }
     else if (option_string == "EXIT") {
         return EXIT;

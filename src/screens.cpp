@@ -4,12 +4,16 @@
 
 #include <iostream>
 #include <unistd.h>
+#include <fstream>
+#include <string>
+#include <sys/stat.h>
 
 #include "../include/screens.h"
 #include "../include/terminalFunctions.h"
 #include "../include/ConvertInput.h"
 #include "../include/DataInput.h"
 #include "../include/Currencies.h"
+#include "../include/minorFunctions.h"
 
 void welcome_screen() {
 
@@ -47,13 +51,81 @@ Option option_screen() {
 
     std::cout << left_justify_on_80("Forex conversions on real-time rates.");
 
+    print_blank_lines(1);
+
+    print_option("CHANGE_KEY");
+
+    std::cout << left_justify_on_80("Change API key.");
+
+    print_blank_lines(1);
+
+    print_option("EXIT");
+
+    std::cout << left_justify_on_80("Exit the application.");
+
     print_blank_lines(2);
 
-    std::cout << left_justify_on_80("Enter function (DATA | CONVERT | EXIT) :") << std::endl;
+    std::cout << left_justify_on_80("Enter function (DATA | CONVERT | CHANGE_KEY | EXIT) :") << std::endl;
 
     Option option = get_option();
 
     return option;
+}
+
+std::string api_key_screen(bool force) {
+
+    std::string api_key;
+
+    std::string home_dir = getenv("HOME");
+    std::string dir_path = home_dir + "/.taurus-view";
+    std::string file_path = dir_path + "/api_key.txt";
+
+    struct stat sb;
+
+    // Checks if directory already exists.
+    if (stat(dir_path.c_str(), &sb) == 0 && S_ISDIR(sb.st_mode)) {
+
+        if (!force) {
+            std::ifstream in_file(file_path);
+
+            // Check if file already exists.
+            if (in_file.is_open()) {
+
+                api_key = std::string((std::istreambuf_iterator<char>(in_file)),
+                                      std::istreambuf_iterator<char>());
+
+                return strip(api_key);
+            }
+        }
+    }
+    else {
+        int result = mkdir(dir_path.c_str(), 0755);
+
+        if (result != 0 ) {
+            throw "Failed to create directory '.taurus-view' in home directory.";
+        }
+    }
+
+    clear_screen();
+
+    print_blank_lines(4);
+
+    std::cout << std::string(10, ' ') << "+----------------------------------------------------------+" << std::endl;
+    std::cout << std::string(10, ' ') << "|                         API key                          |" << std::endl;
+    std::cout << std::string(10, ' ') << "+----------------------------------------------------------+" << std::endl;
+    std::cout << std::string(10, ' ') << "|                                                          |" << std::endl;
+    std::cout << std::string(10, ' ') << "|                Please enter your API key.                |" << std::endl;
+    std::cout << std::string(10, ' ') << "|                                                          |" << std::endl;
+    std::cout << std::string(10, ' ') << "|                                                          |" << std::endl;
+    std::cout << std::string(10, ' ') << "|                     ________________                     |" << std::endl;
+    std::cout << std::string(10, ' ') << "|                                                          |" << std::endl;
+    std::cout << std::string(10, ' ') << "|   If you do not have an API key get one for free from    |" << std::endl;
+    std::cout << std::string(10, ' ') << "|                                                          |" << std::endl;
+    std::cout << std::string(10, ' ') << "|       https://www.alphavantage.co/support/#api-key       |" << std::endl;
+    std::cout << std::string(10, ' ') << "|                                                          |" << std::endl;
+    std::cout << std::string(10, ' ') << "+----------------------------------------------------------+" << std::endl;
+
+    return get_and_store_api_key(file_path);
 }
 
 ConvertInput convert_input_screen() {
