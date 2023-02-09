@@ -70,6 +70,8 @@ TaurusView uses APIs from [Alpha Vantage](https://www.alphavantage.co/). For thi
 
 You will be prompted for this API key the first time you use TaurusView. You will also be able to change this API key at anytime.
 
+Refer to https://medium.com/@kumuthu53/taurusview-5167a0f25952 for a detailed guide on how to use TaurusView.
+
 ## Dependencies
 
 I have used the following third-party dependencies in this project.
