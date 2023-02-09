@@ -2,11 +2,8 @@
 // Created by kumuthu on 3/02/23.
 //
 
-#ifdef _WIN32
-#include <Windows.h>
-#else
+
 #include <unistd.h>
-#endif
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -16,8 +13,7 @@
 #include <fstream>
 
 #include "../include/terminalFunctions.h"
-#include "../include/screens.h"
-#include "../include/Currencies.h"
+
 
 void clear_screen() {
     std::cout << "\033c";
@@ -25,20 +21,21 @@ void clear_screen() {
 
 void loading(int number) {
 
-    sleep(3);
+    std::cout << std::string(((80 - number) / 2), ' ');
 
-    //std::cout << "          ";
-    //std::cout << "*";
-    //std::cout.flush();
-    //
-    //for (int i = 0; i < number - 1; i++) {
-    //    sleep(1);
-    //
-    //    std::cout << "*";
-    //    std::cout.flush();
-    //}
-    //
-    //sleep(1);
+    // White text.
+    std::cout << "\033[37;1m";
+
+    // Blink off.
+    std::cout << "\033[?25l";
+
+    for (int i = 0; i < number; i++) {
+        std::cout.flush();
+        std::cout << "*";
+        usleep(100000);
+    }
+
+    reset_styling();
 
 }
 
@@ -47,8 +44,8 @@ void print_title(const std::string& text) {
     // Bold.
     std::cout << "\033[1m";
 
-    // Green text.
-    std::cout << "\033[32m";
+    // Black text.
+    std::cout << "\033[30;1m";
 
     // White background.
     std::cout << "\033[47m";
@@ -97,13 +94,16 @@ void print_option(const std::string &text) {
         throw "Line too long. Maximum is 80 characters.";
     }
 
+    // Bold text.
+    std::cout << "\033[1m";
+
+    // Magenta text.
+    std::cout << "\033[35;1m";
+
     std::cout << "   * ";
 
     // Underlined text.
     std::cout << "\033[4m";
-
-    // Bold text.
-    std::cout << "\033[1m";
 
     std::cout << text << std::endl;
 
@@ -157,7 +157,9 @@ std::string get_and_store_api_key(std::string file_path) {
     // Move cursor.
     std::cout << "\033[12;33H";
 
-    std::cout << "________________                     |";
+    std::cout << "________________                     ";
+    std::cout << "\033[36;1m" << "|";
+    reset_styling();
 
     // Clear current line.
     std::cout << "\033[K";
@@ -500,5 +502,19 @@ void print_ascii_arrow() {
     std::cout << std::string(15, ' ') << "       @@@@@       " << std::endl;
     std::cout << std::string(15, ' ') << "         @         " << std::endl;
 
+}
+
+void print_ascii_title() {
+
+    // Blue text.
+    std::cout << "\033[34;1m";
+
+    std::cout << std::string(12, ' ') << "  ______                           _    ___             " << std::endl;
+    std::cout << std::string(12, ' ') << " /_  __/___ ___  _________  ______| |  / (_)__ _      __" << std::endl;
+    std::cout << std::string(12, ' ') << "  / / / __ `/ / / / ___/ / / / ___/ | / / / _ \\ | /| / /" << std::endl;
+    std::cout << std::string(12, ' ') << " / / / /_/ / /_/ / /  / /_/ (__  )| |/ / /  __/ |/ |/ / " << std::endl;
+    std::cout << std::string(12, ' ') << "/_/  \\__,_/\\__,_/_/   \\__,_/____/ |___/_/\\___/|__/|__/  " << std::endl;
+
+    reset_styling();
 }
 
