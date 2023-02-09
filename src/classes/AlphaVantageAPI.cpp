@@ -29,7 +29,7 @@ std::string AlphaVantageAPI::get_data_response(const std::string &from_currency,
     std::string url = endpoint + "function=FX_" + frequency_string;
     url = url + "&from_symbol=" + from_currency;
     url = url + "&to_symbol=" + to_currency;
-    //url = url + "&apikey=" + api_key;
+    url = url + "&apikey=" + api_key;
 
     if (debug) {
         std::cout << url << std::endl;

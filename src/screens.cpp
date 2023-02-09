@@ -384,7 +384,7 @@ void error_screen() {
 
     print_blank_lines(1);
 
-    std::cout << std::string(5, ' ') << "Press enter to go back to the main menu." << std::endl;
+    std::cout << std::string(5, ' ') << "Press enter to go back to the main menu.";
 
     std::cin.get();
 

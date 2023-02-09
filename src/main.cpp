@@ -6,10 +6,7 @@
 
 #include "../include/screens.h"
 #include "../include/terminalFunctions.h"
-#include "../include/ConvertInput.h"
-#include "../include/DataInput.h"
 #include "../include/AlphaVantageAPI.h"
-#include "../include/ConvertOutput.h"
 #include "../include/processing.h"
 
 
@@ -30,7 +27,7 @@ int app() {
             Option end_option;
 
             try {
-                DataOutput data_output = process_data(data_input, api, true);
+                DataOutput data_output = process_data(data_input, api);
                 end_option = data_output_screen(data_output);
             } catch (...) {
                 error_screen();
@@ -45,7 +42,7 @@ int app() {
 
             ConvertInput convert_input = convert_input_screen();
 
-            ConvertOutput convert_output = process_convert(convert_input, api, true);
+            ConvertOutput convert_output = process_convert(convert_input, api);
 
             Option end_option = convert_output_screen(convert_output);
 
