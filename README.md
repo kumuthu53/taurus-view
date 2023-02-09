@@ -13,7 +13,7 @@ TaurusView is a command line tool dealing with forex data. It allows for forex c
 
 ## Getting Started
 
-You can easily install TaurusView on your Ubuntu system by using the provided script as explained in the following sections. You can also build it by using the provided script or manually. 
+You can easily install TaurusView on your Ubuntu system by using the provided install script as explained in the following sections. You can also just build it by using the provided build script or manually. 
 
 ## Installation
 
@@ -62,3 +62,16 @@ $ sudo bash build.sh
 $ sudo apt-get update
 $ sudo apt-get install libcurl4-openssl-dev
 ```
+## Usage
+
+TaurusView uses APIs from [Alpha Vantage](https://www.alphavantage.co/). For this reason you need to have an API key, which you can obtain for free from [here](https://www.alphavantage.co/support/#).
+
+You will be prompted for this API key the first time you use TaurusView. You will also be able to change this API key at anytime.
+
+## Dependencies
+
+I have used the following third-party dependencies in this project.
+* [fast-cpp-csv-parser](https://github.com/ben-strasser/fast-cpp-csv-parser)
+* [rapidjson](https://github.com/Tencent/rapidjson)
+* [libcurl](https://curl.se/libcurl/)
+
