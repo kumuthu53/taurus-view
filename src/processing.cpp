@@ -15,9 +15,11 @@ ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVant
     processing_screen();
 
     std::string response = api.get_rate_response(convert_input.get_from_symbol(),
-                                                 convert_input.get_to_symbol());
+                                                 convert_input.get_to_symbol(), debug);
 
     if (debug) {
+        std::cout << std::endl;
+
         std::cout << response << std::endl;
 
         std::cin.get();
@@ -56,9 +58,12 @@ DataOutput process_data(const DataInput &data_input, const AlphaVantageAPI &api,
     processing_screen();
 
     std::string response = api.get_data_response(data_input.get_from_symbol(),
-                                                 data_input.get_to_symbol(), data_input.get_frequency());
+                                                 data_input.get_to_symbol(), data_input.get_frequency(),
+                                                 debug);
 
     if (debug) {
+        std::cout << std::endl;
+
         std::cout << response << std::endl;
 
         std::cin.get();

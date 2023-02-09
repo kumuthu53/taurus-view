@@ -13,7 +13,8 @@ void AlphaVantageAPI::set_api_key(const std::string &api_key) {
 }
 
 std::string AlphaVantageAPI::get_data_response(const std::string &from_currency, const std::string &to_currency,
-                                               Frequency frequency) const {
+                                               Frequency frequency,
+                                               const bool &debug) const {
 
     std::string frequency_string;
 
@@ -28,14 +29,19 @@ std::string AlphaVantageAPI::get_data_response(const std::string &from_currency,
     std::string url = endpoint + "function=FX_" + frequency_string;
     url = url + "&from_symbol=" + from_currency;
     url = url + "&to_symbol=" + to_currency;
-    url = url + "&apikey=" + api_key;
+    //url = url + "&apikey=" + api_key;
+
+    if (debug) {
+        std::cout << url << std::endl;
+    }
 
     std::string response = curl_request(url);
 
     return response;
 }
 
-std::string AlphaVantageAPI::get_rate_response(const std::string &from_currency, const std::string &to_currency) const {
+std::string AlphaVantageAPI::get_rate_response(const std::string &from_currency, const std::string &to_currency,
+                                               const bool &debug) const {
 
     std::string url = endpoint + "function=CURRENCY_EXCHANGE_RATE";
     url = url + "&from_currency=" + from_currency;

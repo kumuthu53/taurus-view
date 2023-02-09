@@ -18,8 +18,10 @@ private:
 public:
     explicit AlphaVantageAPI(const std::string &api_key);
     void set_api_key(const std::string &api_key);
-    std::string get_data_response(const std::string &from_currency, const std::string &to_currency, Frequency frequency) const;
-    std::string get_rate_response(const std::string &from_currency, const std::string &to_currency) const;
+    std::string get_data_response(const std::string &from_currency, const std::string &to_currency, Frequency frequency,
+                                  const bool &debug) const;
+    std::string
+    get_rate_response(const std::string &from_currency, const std::string &to_currency, const bool &debug) const;
 };
 
 

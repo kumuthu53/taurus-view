@@ -3,19 +3,13 @@
 //
 
 #include <iostream>
-#include <unistd.h>
 #include <fstream>
 #include <string>
 #include <sys/stat.h>
 
 #include "../include/screens.h"
 #include "../include/terminalFunctions.h"
-#include "../include/ConvertInput.h"
-#include "../include/DataInput.h"
-#include "../include/Currencies.h"
 #include "../include/minorFunctions.h"
-#include "../include/DataOutput.h"
-#include "../include/ConvertOutput.h"
 
 void welcome_screen() {
 
@@ -362,7 +356,23 @@ void exit_screen() {
 
 }
 
+void error_screen() {
 
+    clear_screen();
+
+    reset_styling();
+
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ') << "Something went wrong." << std::endl;
+
+    print_blank_lines(1);
+
+    std::cout << std::string(5, ' ');
+
+    std::cin.get();
+
+}
 
 
 

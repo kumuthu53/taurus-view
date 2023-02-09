@@ -27,9 +27,19 @@ int app() {
 
             DataInput data_input = data_input_screen();
 
-            DataOutput data_output = process_data(data_input, api, true);
+            Option end_option;
 
-            Option end_option = data_output_screen(data_output);
+            try {
+                DataOutput data_output = process_data(data_input, api, true);
+
+                end_option = data_output_screen(data_output);
+            } catch (...) {
+                error_screen();
+
+                break;
+            }
+
+
 
             if (end_option == EXIT) {
                 break;

@@ -34,6 +34,8 @@ Option convert_output_screen(const ConvertOutput &convert_output);
 
 Option data_output_screen(const DataOutput &data_output);
 
+void error_screen();
+
 void exit_screen();
 
 #endif //TAURUS_VIEW_SCREENS_H
