@@ -77,4 +77,8 @@ I have used the following third-party dependencies in this project.
 * [rapidjson](https://github.com/Tencent/rapidjson)
 * [libcurl](https://curl.se/libcurl/)
 
+## Compatibility.
+
+This project has been built for Ubuntu. The install and build scripts would probably work on other Debian-based distros. The code would probably work, if you compile it yourself, on other Linux distros and possibly even MacOS. I have onlyt tested this on Ubuntu.
+
 
