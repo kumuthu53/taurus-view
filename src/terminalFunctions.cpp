@@ -13,6 +13,7 @@
 #include <fstream>
 
 #include "../include/terminalFunctions.h"
+#include "../include/Exception.h"
 
 
 void clear_screen() {
@@ -66,7 +67,7 @@ std::string center_on_80(const std::string &text) {
     size_t length = text.size();
 
     if (length > 80) {
-        throw "Line too long. Maximum is 80 characters.";
+        throw Exception("Line too long. Maximum is 80 characters.");
     }
 
     int prefix_length = (80 - length) / 2;
@@ -80,7 +81,7 @@ std::string center_on_80(const std::string &text) {
 std::string left_justify_on_80(const std::string &text) {
 
     if (text.size() > 75) {
-        throw "Line too long. Maximum is 80 characters.";
+        throw Exception("Line too long. Maximum is 80 characters.");
     }
 
     std::string justified = std::string(5, ' ') + text;
@@ -91,7 +92,7 @@ std::string left_justify_on_80(const std::string &text) {
 void print_option(const std::string &text) {
 
     if (text.size() > 75) {
-        throw "Line too long. Maximum is 80 characters.";
+        throw Exception("Line too long. Maximum is 80 characters.");
     }
 
     // Bold text.
@@ -192,7 +193,7 @@ std::string get_and_store_api_key(std::string file_path) {
     std::ofstream out_file(file_path);
 
     if (!out_file) {
-        throw "Failed to create file '~/taurus-view/api_key.txt.";
+        throw Exception("Failed to create file '~/taurus-view/api_key.txt.");
     }
 
     out_file << api_key;

@@ -10,6 +10,7 @@
 #include "../include/screens.h"
 #include "../include/terminalFunctions.h"
 #include "../include/minorFunctions.h"
+#include "../include/Exception.h"
 
 void welcome_screen() {
 
@@ -128,7 +129,7 @@ std::string api_key_screen(bool force) {
         int result = mkdir(dir_path.c_str(), 0755);
 
         if (result != 0 ) {
-            throw "Failed to create directory '.taurus-view' in home directory.";
+            throw Exception("Failed to create directory '.taurus-view' in home directory.");
         }
     }
 

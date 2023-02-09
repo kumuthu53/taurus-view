@@ -75,6 +75,11 @@ int main() {
 
         std::cout << "Error: ";
         std::cout << error << std::endl;
+    } catch (const std::exception &e) {
+        reset_styling();
+
+        std::cout << "Error: ";
+        std::cout << e.what() << std::endl;
     }
 }
 

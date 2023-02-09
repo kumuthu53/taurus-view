@@ -7,6 +7,7 @@
 #include <curl/curl.h>
 
 #include "../../include/AlphaVantageAPI.h"
+#include "../../include/Exception.h"
 
 void AlphaVantageAPI::set_api_key(const std::string &api_key) {
     this->api_key = api_key;
@@ -62,7 +63,7 @@ std::string AlphaVantageAPI::curl_request(const std::string &url) {
     CURL *curl = curl_easy_init();
 
     if (!curl) {
-        throw "Failed to initialize curl.";
+        throw Exception("Failed to initialize curl.");
     }
 
     std::string response;
@@ -77,7 +78,7 @@ std::string AlphaVantageAPI::curl_request(const std::string &url) {
 
     // Checks if the request succeeded.
     if (res != CURLE_OK) {
-        throw "Curl request failed.";
+        throw Exception("Curl request failed.");
     }
 
     // Cleaning up the curl session.
