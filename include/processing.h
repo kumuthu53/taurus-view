@@ -12,8 +12,8 @@
 #include "AlphaVantageAPI.h"
 
 
-ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVantageAPI &api);
+ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVantageAPI &api, const bool debug = false);
 
-DataOutput process_data(const DataInput &data_input, const AlphaVantageAPI &api);
+DataOutput process_data(const DataInput &data_input, const AlphaVantageAPI &api, const bool debug = false);
 
 #endif //TAURUS_VIEW_PROCESSING_H

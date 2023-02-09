@@ -10,12 +10,18 @@
 #include "../include/minorFunctions.h"
 
 
-ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVantageAPI &api) {
+ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVantageAPI &api, const bool debug) {
 
     processing_screen();
 
     std::string response = api.get_rate_response(convert_input.get_from_symbol(),
                                                  convert_input.get_to_symbol());
+
+    if (debug) {
+        std::cout << response << std::endl;
+
+        std::cin.get();
+    }
 
     rapidjson::Document json_object = parse_json(response);
 
@@ -45,16 +51,75 @@ ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVant
     return convert_output;
 }
 
-DataOutput process_data(const DataInput &data_input, const AlphaVantageAPI &api) {
+DataOutput process_data(const DataInput &data_input, const AlphaVantageAPI &api, const bool debug) {
 
     processing_screen();
 
     std::string response = api.get_data_response(data_input.get_from_symbol(),
                                                  data_input.get_to_symbol(), data_input.get_frequency());
 
-    std::cout << response;
+    if (debug) {
+        std::cout << response << std::endl;
 
-    std::cin.get();
+        std::cin.get();
+    }
 
-    return DataOutput();
+    rapidjson::Document json_object = parse_json(response);
+
+    std::vector<std::string> dates;
+    std::vector<std::string> open_values;
+    std::vector<std::string> close_values;
+
+    std::string from_symbol = json_object["Meta Data"]["2. From Symbol"].GetString();
+    std::string to_symbol = json_object["Meta Data"]["3. To Symbol"].GetString();
+
+    std::string data_time;
+    std::string list_key;
+
+    if (data_input.get_frequency() == DAILY){
+        data_time = json_object["Meta Data"]["5. Last Refreshed"].GetString() + std::string(1, ' ') +
+                                json_object["Meta Data"]["6. Time Zone"].GetString();
+        list_key = "Time Series FX (Daily)";
+    } else {
+        data_time = json_object["Meta Data"]["4. Last Refreshed"].GetString() + std::string(1, ' ') +
+                                json_object["Meta Data"]["5. Time Zone"].GetString();
+
+        if (data_input.get_frequency() == WEEKLY) {
+            list_key = "Time Series FX (Weekly)";
+        } else {
+            list_key = "Time Series FX (Monthly)";
+        }
+    }
+
+    const rapidjson::Value &list = json_object[list_key.c_str()];
+
+    char count = 0;
+
+    for (rapidjson::Value::ConstMemberIterator itr = list.MemberBegin(); itr != list.MemberEnd(); itr++) {
+        std::string date = itr->name.GetString();
+        std::string open_value = list[date.c_str()]["1. open"].GetString();
+        std::string close_value = list[date.c_str()]["4. close"].GetString();
+
+        dates.push_back(right_justify_string(14, date));
+        open_values.push_back(right_justify_string(18, open_value));
+        close_values.push_back(right_justify_string(18, close_value));
+
+        count++;
+
+        if (count > 6) {
+            break;
+        }
+    }
+
+    DataOutput data_output;
+
+    data_output.set_dates(dates);
+    data_output.set_open_values(open_values);
+    data_output.set_close_values(close_values);
+    data_output.set_from_symbol(from_symbol);
+    data_output.set_to_symbol(to_symbol);
+    data_output.set_data_time(data_time);
+
+
+    return data_output;
 }

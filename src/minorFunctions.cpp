@@ -41,3 +41,14 @@ std::string money_amount_string(const int &width, const double &amount) {
 
     return amount_string;
 }
+
+std::string right_justify_string(const int &width, const std::string &string) {
+
+    std::stringstream ss;
+
+    ss << std::setw(width) << std::right << string;
+
+    std::string justified = ss.str();
+
+    return justified;
+}

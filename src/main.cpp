@@ -27,7 +27,7 @@ int app() {
 
             DataInput data_input = data_input_screen();
 
-            DataOutput data_output = process_data(data_input, api);
+            DataOutput data_output = process_data(data_input, api, true);
 
             Option end_option = data_output_screen(data_output);
 
@@ -39,7 +39,7 @@ int app() {
 
             ConvertInput convert_input = convert_input_screen();
 
-            ConvertOutput convert_output = process_convert(convert_input, api);
+            ConvertOutput convert_output = process_convert(convert_input, api, true);
 
             Option end_option = convert_output_screen(convert_output);
 

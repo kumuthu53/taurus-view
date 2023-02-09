@@ -35,3 +35,19 @@ const std::string &DataOutput::get_data_time() const {
 void DataOutput::set_data_time(const std::string &data_time) {
     this->data_time = data_time;
 }
+
+const std::string &DataOutput::get_from_symbol() const {
+    return from_symbol;
+}
+
+void DataOutput::set_from_symbol(const std::string &from_symbol) {
+    this->from_symbol = from_symbol;
+}
+
+const std::string &DataOutput::get_to_symbol() const {
+    return to_symbol;
+}
+
+void DataOutput::set_to_symbol(const std::string &to_symbol) {
+    this->to_symbol = to_symbol;
+}

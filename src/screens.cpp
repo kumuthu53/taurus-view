@@ -308,6 +308,41 @@ Option data_output_screen(const DataOutput &data_output) {
 
     // Displaying the output.
 
+    for (int i = 0; i < 7; i++) {
+
+        std::string col = std::to_string((i * 2) + 5);
+
+        // Move cursor.
+        std::cout << "\033[" + col + ";13H";
+
+        std::cout << data_output.get_dates()[i];
+
+        // Move cursor.
+        std::cout << "\033[" + col + ";30H";
+
+        std::cout << data_output.get_open_values()[i];
+
+        // Move cursor.
+        std::cout << "\033[" + col + ";51H";
+
+        std::cout << data_output.get_close_values()[i];
+    }
+
+    // Move cursor.
+    std::cout << "\033[20;6H";
+
+    std::cout << data_output.get_from_symbol();
+
+    // Move cursor.
+    std::cout << "\033[20;12H";
+
+    std::cout << data_output.get_to_symbol();
+
+    // Move cursor.
+    std::cout << "\033[21;24H";
+
+    std::cout << data_output.get_data_time();
+
     return get_end_option();
 }
 

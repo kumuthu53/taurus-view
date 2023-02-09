@@ -18,4 +18,6 @@ rapidjson::Document parse_json(const std::string &json_string);
 
 std::string money_amount_string(const int &width, const double &amount);
 
+std::string right_justify_string(const int &width, const std::string &string);
+
 #endif //TAURUS_VIEW_MINORFUNCTIONS_H
