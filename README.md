@@ -19,6 +19,8 @@ You can easily install TaurusView on your Ubuntu system by using the provided sc
 
 * Clone the repository with the following command into a suitable location.
 
-```git clone git@github.com:kumuthu53/taurus-view.git```
+```
+git clone git@github.com:kumuthu53/taurus-view.git
+```
 
 * Temp
