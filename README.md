@@ -1,4 +1,6 @@
 # taurus-view
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 
 ```
   ______                           _    ___             
@@ -74,4 +76,5 @@ I have used the following third-party dependencies in this project.
 * [fast-cpp-csv-parser](https://github.com/ben-strasser/fast-cpp-csv-parser)
 * [rapidjson](https://github.com/Tencent/rapidjson)
 * [libcurl](https://curl.se/libcurl/)
+
 
