@@ -10,7 +10,7 @@ fi
   cd "$build_dir"
 
   # Run CMake to generate the makefiles
-  cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles"
+  cmake -DCMAKE_BUILD_TYPE=Release -G "Unix Makefiles" ..
 
   # Build the project using make
   make
