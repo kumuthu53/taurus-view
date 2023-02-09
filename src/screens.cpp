@@ -366,9 +366,25 @@ void error_screen() {
 
     std::cout << std::string(5, ' ') << "Something went wrong." << std::endl;
 
+    print_blank_lines(2);
+
+    std::cout << std::string(31, ' ') + "    .-\"\"\"\"\"\"-." << std::endl;
+    std::cout << std::string(31, ' ') + "  .'          '.   " << std::endl;
+    std::cout << std::string(31, ' ') + " /   O      O   \\ " << std::endl;
+    std::cout << std::string(31, ' ') + ":                :" << std::endl;
+    std::cout << std::string(31, ' ') + "|                |" << std::endl;
+    std::cout << std::string(31, ' ') + ":    .------.    :" << std::endl;
+    std::cout << std::string(31, ' ') + " \\  '        '  / " << std::endl;
+    std::cout << std::string(31, ' ') + "  '.          .'  " << std::endl;
+    std::cout << std::string(31, ' ') + "    '-......-'    " << std::endl;
+
+    print_blank_lines(2);
+
+    std::cout << std::string(5, ' ') << "Please try again." << std::endl;
+
     print_blank_lines(1);
 
-    std::cout << std::string(5, ' ');
+    std::cout << std::string(5, ' ') << "Press enter to go back to the main menu." << std::endl;
 
     std::cin.get();
 

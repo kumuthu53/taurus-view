@@ -8,6 +8,7 @@
 #include "../include/processing.h"
 #include "../include/screens.h"
 #include "../include/minorFunctions.h"
+#include "../include/Exception.h"
 
 
 ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVantageAPI &api, const bool debug) {
@@ -26,6 +27,10 @@ ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVant
     }
 
     rapidjson::Document json_object = parse_json(response);
+
+    if (json_object.HasMember("Error Message")) {
+        throw Exception("Error when making request.");
+    }
 
     double from_currency_amount = convert_input.get_amount();
     std::string exchange_rate_string = json_object["Realtime Currency Exchange Rate"]["5. Exchange Rate"].GetString();
@@ -70,6 +75,10 @@ DataOutput process_data(const DataInput &data_input, const AlphaVantageAPI &api,
     }
 
     rapidjson::Document json_object = parse_json(response);
+
+    if (json_object.HasMember("Error Message")) {
+        throw Exception("Error when making request.");
+    }
 
     std::vector<std::string> dates;
     std::vector<std::string> open_values;
