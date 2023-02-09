@@ -31,7 +31,7 @@ int app() {
                 end_option = data_output_screen(data_output);
             } catch (...) {
                 error_screen();
-                break;
+                continue;
             }
 
             if (end_option == EXIT) {
@@ -42,9 +42,15 @@ int app() {
 
             ConvertInput convert_input = convert_input_screen();
 
-            ConvertOutput convert_output = process_convert(convert_input, api);
+            Option end_option;
 
-            Option end_option = convert_output_screen(convert_output);
+            try {
+                ConvertOutput convert_output = process_convert(convert_input, api);
+                end_option = convert_output_screen(convert_output);
+            } catch (...) {
+                error_screen();
+                continue;
+            }
 
             if (end_option == EXIT) {
                 break;
