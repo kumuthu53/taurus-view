@@ -27,6 +27,8 @@ int app() {
 
             DataInput data_input = data_input_screen();
 
+            DataOutput data_output = process_data(data_input, api);
+
             Option end_option = data_output_screen();
 
             if (end_option == EXIT) {

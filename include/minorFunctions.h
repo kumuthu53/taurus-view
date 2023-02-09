@@ -7,7 +7,15 @@
 
 #include <string>
 
+#include "../dependencies/rapidjson/document.h"
+#include "../dependencies/rapidjson/writer.h"
+#include "../dependencies/rapidjson/stringbuffer.h"
+
 
 std::string strip(const std::string& text);
+
+rapidjson::Document parse_json(const std::string &json_string);
+
+std::string money_amount_string(const int &width, const double &amount);
 
 #endif //TAURUS_VIEW_MINORFUNCTIONS_H

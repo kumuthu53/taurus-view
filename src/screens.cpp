@@ -210,17 +210,11 @@ void processing_screen() {
 
     print_blank_lines(1);
 
-    std::cout << std::string(5, ' ');
-
 }
 
 Option convert_output_screen() {
 
     clear_screen();
-
-    print_blank_lines(1);
-
-    std::cout << std::string(5, ' ') << "Press LEFT ARROW KEY to return to main menu." << std::endl;
 
     print_blank_lines(1);
 
@@ -245,7 +239,6 @@ Option convert_output_screen() {
     print_blank_lines(1);
 
     std::cout << std::string(5, ' ') << "Data refreshed at " << std::endl;
-    std::cout << std::string(5, ' ') << "Sourced from www.alphavantage.co" << std::endl;
 
     print_blank_lines(1);
 
@@ -272,8 +265,8 @@ Option data_output_screen() {
 
     print_blank_lines(1);
 
+    std::cout << std::string(5, ' ') << "    :    " << std::endl;
     std::cout << std::string(5, ' ') << "Data refreshed at " << std::endl;
-    std::cout << std::string(5, ' ') << "Sourced from www.alphavantage.co" << std::endl;
 
     print_blank_lines(1);
 

@@ -14,4 +14,6 @@
 
 ConvertOutput process_convert(const ConvertInput &convert_input, const AlphaVantageAPI &api);
 
+DataOutput process_data(const DataInput &data_input, const AlphaVantageAPI &api);
+
 #endif //TAURUS_VIEW_PROCESSING_H

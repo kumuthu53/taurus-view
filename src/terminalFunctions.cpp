@@ -493,6 +493,7 @@ void print_ascii_arrow() {
 
     std::cout << std::string(15, ' ') << "        @@@        " << std::endl;
     std::cout << std::string(15, ' ') << "        @@@        " << std::endl;
+    std::cout << std::string(15, ' ') << "        @@@        " << std::endl;
     std::cout << std::string(15, ' ') << "%@@@    @@@    @@@," << std::endl;
     std::cout << std::string(15, ' ') << "  @@@@  @@@  @@@@  " << std::endl;
     std::cout << std::string(15, ' ') << "    @@@@@@@@@@@    " << std::endl;
