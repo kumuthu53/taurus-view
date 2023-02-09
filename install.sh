@@ -12,13 +12,13 @@ if [ ! -f "$EXE_LOCATION" ]; then
   exit 1
 fi
 
-sudo cp EXE_LOCATION /usr/local/bin
-sudo chmod +x /usr/local/bin/EXE
+sudo cp $EXE_LOCATION /usr/local/bin
+sudo chmod +x /usr/local/bin/$EXE
 
 # Check if installation was successful.
-if command -v EXE >/dev/null 2>&1; then
-  echo "EXE was installed successfully."
+if command -v $EXE >/dev/null 2>&1; then
+  echo "$EXE was installed successfully."
 else
-  echo "Error: EXE was not installed successfully."
+  echo "Error: $EXE was not installed successfully."
   exit 1
 fi
