@@ -7,6 +7,8 @@
 
 #include "DataInput.h"
 #include "ConvertInput.h"
+#include "DataOutput.h"
+#include "ConvertOutput.h"
 
 enum Option : char {
     DATA = 0,
@@ -28,9 +30,9 @@ DataInput data_input_screen();
 
 void processing_screen();
 
-Option convert_output_screen();
+Option convert_output_screen(const ConvertOutput &convert_output);
 
-Option data_output_screen();
+Option data_output_screen(const DataOutput &data_output);
 
 void exit_screen();
 

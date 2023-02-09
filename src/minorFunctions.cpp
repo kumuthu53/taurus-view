@@ -35,5 +35,9 @@ std::string money_amount_string(const int &width, const double &amount) {
 
     std::string amount_string = ss.str();
 
+    if (amount_string.length() > width) {
+        amount_string = "Too large to display";
+    }
+
     return amount_string;
 }

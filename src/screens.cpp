@@ -14,6 +14,8 @@
 #include "../include/DataInput.h"
 #include "../include/Currencies.h"
 #include "../include/minorFunctions.h"
+#include "../include/DataOutput.h"
+#include "../include/ConvertOutput.h"
 
 void welcome_screen() {
 
@@ -212,7 +214,7 @@ void processing_screen() {
 
 }
 
-Option convert_output_screen() {
+Option convert_output_screen(const ConvertOutput &convert_output) {
 
     clear_screen();
 
@@ -244,11 +246,43 @@ Option convert_output_screen() {
 
     std::cout << std::string(5, ' ') << "Enter 'BACK' to go back or 'EXIT' to exit : ";
 
+    // Displaying the output.
+
+    // Move cursor.
+    std::cout << "\033[3;13H";
+
+    std::cout << convert_output.get_from_currency_amount();
+
+    // Move cursor.
+    std::cout << "\033[3;42H";
+
+    std::cout << convert_output.get_from_currency_name();
+
+    // Move cursor.
+    std::cout << "\033[16;13H";
+
+    std::cout << convert_output.get_to_currency_amount();
+
+    // Move cursor.
+    std::cout << "\033[16;42H";
+
+    std::cout << convert_output.get_to_currency_name();
+
+    // Move cursor.
+    std::cout << "\033[19;23H";
+
+    std::cout << convert_output.get_exchange_rate();
+
+    // Move cursor.
+    std::cout << "\033[21;24H";
+
+    std::cout << convert_output.get_data_time();
+
     return get_end_option();
 
 }
 
-Option data_output_screen() {
+Option data_output_screen(const DataOutput &data_output) {
 
     clear_screen();
 
@@ -271,6 +305,8 @@ Option data_output_screen() {
     print_blank_lines(1);
 
     std::cout << std::string(5, ' ') << "Enter 'BACK' to go back or 'EXIT' to exit : ";
+
+    // Displaying the output.
 
     return get_end_option();
 }
