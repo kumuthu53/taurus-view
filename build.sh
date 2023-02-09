@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Install libcurl.
+sudo apt-get update
+sudo apt-get install libcurl4-openssl-dev
+
 build_dir=build
 
 if [ ! -d "$build_dir" ]; then
