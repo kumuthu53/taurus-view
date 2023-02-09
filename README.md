@@ -52,10 +52,10 @@ $ git clone git@github.com:kumuthu53/taurus-view.git
 ```shell
 $ cd taurus-view
 ```
-* Run the build script. The build file will build the application. After installing the required library libcurl, it will use Cmake to generate the Makefile and then use make to build TaurusView. The resulting executable will be found in the directory 'build'. 
+* Run the build script with root user privileges. The build file will build the application. After installing the required library libcurl, it will use Cmake to generate the Makefile and then use make to build TaurusView. The resulting executable will be found in the directory 'build'. 
 
 ```shell
-$ source build.sh
+$ sudo bash build.sh
 ```
 * Alternatively, you can open the project as a Cmake project in your favourite IDE and then build it. In this case, make sure to manually install libcurl with the following commands.
 ```shell
